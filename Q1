@@ -1,1 +1,41 @@
+from math import *
+
+# Function to print the divisors
+def printDivisors(n):
+    ls = []
+    i = 1
+    while (i * i < n):
+        if (n % i == 0):
+            ls.append(i)
+
+        i += 1
+
+    for i in range(int(sqrt(n)), 0, -1):
+        if (n % i == 0):
+            ls.append(n // i)
+    return ls
+
+# Function to count number of odd and even divisors
+def count(ls):
+    odd = 0
+    even = 0
+    for num in ls:
+        if num % 2 ==0:
+            even +=1
+        else:
+            odd+=1
+    return odd,even
+
+# Final Function
+def decision(n):
+    if n >= 0 & n < 10**18:
+        list = printDivisors(n)
+        num_odd = count(list)[0]
+        num_even = count(list)[1]
+        if num_odd > num_even:
+            print("SELL")
+        elif num_odd == num_even:
+            print("PASS")
+        else:
+            print("BUY")
 
